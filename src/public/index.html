@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список пользователей</title>
+    <style>
+       body{
+        background-color: black;
+    }
+</style>
+</head>
+<body>
+    <form id="user-form">
+        <input type="text" id="name" placeholder="Введите имя" required>
+        <input type="text" id="pusw" placeholder="Введите " required>
+        <button type="submit">Войти</button>
+    </form>
+
+    <script>
+        document.getElementById('user-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const  pusw = document.getElementById('pusw').value;
+
+            console.log(pusw);
+
+            const response = await fetch(`/api/users/`, { 
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    name: pusw
+                })
+            });
+        console.log(response);
+
+        const response1 = await fetch(`/home`);
+        });
+    </script>
+</body>
+</html>
